@@ -127,6 +127,16 @@ instances that are created through it.
 
 
 
+var Person = function(name, job){
+    this.name = name;
+    this.job = job;
+    this.introduction = function(){
+        console.log('Hello my name is '+this.name);
+    };
+};
+
+var eddie = new Person('eddie', 'Engineer')
+eddie.introduction()
 
 
 
