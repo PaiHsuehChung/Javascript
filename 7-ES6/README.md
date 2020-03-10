@@ -273,14 +273,72 @@ var john = new SmithPerson('John', 1990);
 
 ## Lecture : Maps
 ``` js
-
 var mapObj = new Map();
-
+// Map is iteable. So can use for each function.
 mapObj.set('name', 'eddie');
 mapObj.set('age', 20);
 
 // Note: value is first parameters, key is after.
-mapObj.forEach((value, key) => console.log(`This is key : ${key}`))
-console.log(mapObj.get('name'))
+mapObj.forEach((value, key) => console.log(`This is key : ${key}`));
 
+// Get value use key.
+console.log(mapObj.get('name'));
 ```
+
+## Lecture : Classes
+``` js
+class Person6 {
+    constructor(name, age){
+        this.name = name;
+        this.age = age;
+    }
+
+    greeting(){
+        console.log(`My name is ${this.name} and i am ${this.age} years old.`)
+    }
+}
+
+var eddie = new Person6('eddie', 27);
+```
+## Lecture : Class and Subclass
+
+``` js
+// Parent Class
+class Person6 {
+    constructor(name, age){
+        this.name = name;
+        this.age = age;
+    }
+
+    greeting(){
+        console.log(`My name is ${this.name} and i am ${this.age} years old.`)
+    }
+}
+// Children Class
+class Athlete extends Person6{
+    constructor(name, age, gender, medals){
+        super(name, age);
+        this.gender = gender;
+        this.medals = medals;
+    }
+
+    wonMedals(){
+        this.medals += 1;
+        console.log(`Total medals ${this.medals}`);
+    }
+}
+
+var eddie = new Person6('eddie', 27);
+
+var peter = new Athlete('peter', 30, 'male', 10);
+
+eddie.greeting();
+peter.greeting();
+peter.wonMedals();
+```
+*OUTPUT : <br>My name is eddie and i am 27 years old.<br>My name is peter and i am 30 years old.<br>Total medals 11*
+
+
+
+
+
