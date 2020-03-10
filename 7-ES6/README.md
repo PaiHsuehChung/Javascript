@@ -166,11 +166,121 @@ Person.prototype.myFriends6 = function(friends){
 
 new Person('Eddie').myFriends6(friends);
 
+```
+## Lecture : Destructuring
 
+``` js
+// ES5
+var john = ['John', 26];
+var name = john[0];
+var age = john[1];
+
+// ES6
+const [firstName, lastName] = ['Eddie', 'Pai'];
+
+const obj = {
+    firstName:'eddie',
+    lastName : 'Pai'
+}
+const {firstName:a, lastName:b} = obj;
+
+console.log(a);
+console.log(b); 
+
+```
+## Lecture : Arrays
+
+``` js
+// ES6
+// Select all box(Node List)
+const boxes = document.querySelectorAll('.box');
+
+const boxesArr = Array.from(boxes);
+
+boxesArr.forEach(cur => cur.style.backgroundColor = 'dodgerblue')
 ```
 
 
+## Lecture : Spread Operator
+
+``` js
+function addAge(a,b,c){
+    return a+b+c;
+}
+
+var ages = [20,25,30];
+
+const sum = addAge(...ages);
+console.log(sum);
+```
+*OUTPUT: 75*
+
+``` js
+const familySmith = ['John', 'Jane', 'Mark'];
+const familyMiller = ['Mary', 'Bob', 'Ann'];
+
+const bigFamily = [...familySmith, ...familyMiller];
+```
+*OUTPUT : ["John", "Jane", "Mark", "Mary", "Bob", "Ann"]*
+
+``` js 
+// Select HTML element
+const h = document.querySelector('h1');
+// boxes1 were Node List
+const boxes1 = document.querySelectorAll('.box');
+
+const all = [h, ...boxes1];
+Array.from(all).forEach(cur => cur.style.color = 'purple');
+```
+
+## Lecture : Rest Parameters
+
+``` js
+// Output Array type
+function isFullAge(...years){
+    console.log(years);
+}
+
+isFullAge(1993,2000,2008);
+```
+*OUTPUT : [1993, 2000, 2008]*
 
 
+``` js
+// Output Array type
+function isFullAge(limit, ...years){
+    years.forEach(
+    cur => console.log((2020-cur)>=limit)
+    );
+}
+
+isFullAge(15, 1993, 2000, 2008);
+```
+*OUTPUT :<br>true<br>true<br>false*
 
 
+## Lecture : Default Parameters
+``` js
+// Default Parameters
+function SmithPerson(firstName, yearOfBirth, lastName='smith'){
+    this.firstName = firstName;
+    this.yearOfBirth = yearOfBirth;
+    this.lastName = lastName;
+}
+
+var john = new SmithPerson('John', 1990);
+```
+
+## Lecture : Maps
+``` js
+
+var mapObj = new Map();
+
+mapObj.set('name', 'eddie');
+mapObj.set('age', 20);
+
+// Note: value is first parameters, key is after.
+mapObj.forEach((value, key) => console.log(`This is key : ${key}`))
+console.log(mapObj.get('name'))
+
+```
